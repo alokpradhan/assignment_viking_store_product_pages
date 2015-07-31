@@ -1,4 +1,4 @@
-class DashboardController < ApplicationController
+class Admin::DashboardController < AdminController
   def index
   	@user_seven = User.new_users(7)
   	@user_thirty = User.new_users(30)

@@ -1,5 +1,5 @@
 
-class AddressesController < ApplicationController
+class Admin::AddressesController < AdminController
 
   def index
     if params[:user_id]

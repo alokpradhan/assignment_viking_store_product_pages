@@ -1,4 +1,5 @@
-class ProductsController < ApplicationController
+class Admin::ProductsController < AdminController
+  
   include CategoriesHelper
   
   def index
