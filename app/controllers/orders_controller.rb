@@ -34,7 +34,10 @@ class OrdersController < ApplicationController
   def edit
     @order = Order.find(params[:id])
     @user = @order.user
+    @cart = OrderContent.where(:order_id => @order.id)
   end
+
+
 
   def update
     @order = Order.find(params[:id])

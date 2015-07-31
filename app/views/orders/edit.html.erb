@@ -3,9 +3,45 @@
 <div class="panel panel-default">
   <div class="panel-body">
     <%= render :partial => 'basic_order_info' %>
+    <h4>ORDER STATUS</h5>
+    <h5><%= @order.status.html_safe %></h5>
     <%= form_for [@order] do |f| %>
     <%= render :partial => 'address_dropdowns' %>
     <%= f.submit %>
   <%end%>
+  <%= link_to "DELETE ORDER", order_path(@order), method: :delete  %>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <h3>Edit Order Contents</h3>
+     <table class="table">
+      <thead>
+        <th>Order ID</th>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Total Price</th>
+        <th>Remove</th>
+      </thead>
+      <tbody>
+
+        
+        <% OrderContent.where(:order_id => @order.id).each do |item| %>
+
+        <tr>
+          <td><%=item.order_id %></td>
+          <td><%=item.product.name%></td>
+          <td><%= item.quantity %></td>
+          <td><%=item.product.price%></td>
+          <td><%= item.quantity * item.product.price %></td>
+          <td><%= link_to "Remove" , order_content_path(item), :method => :delete %>
+          </td>
+        </tr>
+
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
