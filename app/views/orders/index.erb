@@ -5,6 +5,9 @@
     <h2 class="text-center" > <%= "#{@user.name}'s'" if @user %> Orders</h2>
 
     <div "text-center">
+      <% if @user %>
+        <%= link_to "Create Order for #{@user.name}", new_user_order_path(@user), :class => "btn btn-primary btn-lg btn-block" %>
+      <% end %>
       <h4><em>Create new orders from within <%= link_to "User", users_path %> profiles</em></h4>
     </div>
 
