@@ -4,9 +4,9 @@ class OrdersController < ApplicationController
     if params[:user_id]
       @user_id = params[:user_id]
       @user = User.find(@user_id)
-      @orders = Order.where("user_id = ?", params[:user_id])
+      @orders = Order.includes({:shipping_address => [:state, :city]}, :order_contents, :billing_address, :user, :products).where("user_id = ?", params[:user_id])
     else
-      @orders = Order.all
+      @orders = Order.includes({:shipping_address => [:state, :city]}, :order_contents, :billing_address, :user, :products)
     end
   end
 
@@ -37,8 +37,6 @@ class OrdersController < ApplicationController
     @cart = OrderContent.where(:order_id => @order.id)
   end
 
-
-
   def update
     @order = Order.find(params[:id])
     if @order.update(params_list)
@@ -63,7 +61,6 @@ class OrdersController < ApplicationController
 end
 
 private
-
 
 def params_list
 
