@@ -8,7 +8,7 @@
     <%= form_for [@order] do |f| %>
     <%= render :partial => 'address_dropdowns' %>
     <%= f.submit %>
-  <%end%>
+  <% end %>
   <%= link_to "DELETE ORDER", order_path(@order), method: :delete  %>
   </div>
 </div>
@@ -26,13 +26,13 @@
         <th>Remove</th>
       </thead>
       <tbody>
-      	<%= form_tag(controller: "order_contents", action: "update") %> 
+      	<%= form_for(:order_content, url: update_quantities_path, method: "put") do |f| %> 
 	        <% @cart.each do |item| %>
 	        <tr>
 	          <td><%=item.order_id %></td>
 	          <td><%=item.product.name%></td>
 	          <td>
-	          	<input type = "text" name = "quantity" > </input>
+	          	<%= text_field_tag "quantity[#{item.id}]", item.quantity  %>
 	          </td>
 	          <td><%= item.product.price %></td>
 	          <td><%= item.quantity * item.product.price %></td>
@@ -40,7 +40,8 @@
 	          </td>
 	        </tr>
 	        <% end %>
-	        <%= submit_tag "Update Order Contents" %> 
+          <%= hidden_field_tag 'order_id', @order.id %>
+	        <%= f.submit "Update Order Contents" %> 
         <% end %>
       </tbody>
     </table>

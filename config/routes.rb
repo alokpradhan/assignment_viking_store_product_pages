@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   root 'dashboard#index'
+  put 'admin/order_contents' => "order_contents#update_quantities", :as => "update_quantities"
   
 
   resources :admin do
@@ -11,8 +12,8 @@ Rails.application.routes.draw do
       resources :products
       resources :categories
       resources :addresses
-      resources :order_contents, :only => [:destroy, :update]
-      resources :orders, :except => [:new, :create]
+      resources :order_contents, :only => [:destroy]
+      resources :orders, :except => [:new, :create] 
       resources :users do
         resources :addresses #:only => [:index, :new, :create]
         resources :orders    #:only => [:index, :new, :create]

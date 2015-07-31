@@ -5,15 +5,17 @@ class OrderContentsController < ApplicationController
     redirect_to URI(request.referer).path
   end
 
-  def update
-  	OrderContent.find(params[:id]).update(whitelisted_params)
+  def update_quantities
+    fail
+    params[:quantity]
+    OrderContent.find(params[:id]).update(whitelisted_params)
   	redirect_to URI(request.referer).path
   end
 
 private
 
-	def whitelisted_params
-		params.require(:order_content).permit(:quantity)
-	end
+	# def whitelisted_params
+	# 	params.require(:order_content).permit(:quantity)
+	# end
 
 end
