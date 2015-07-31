@@ -11,7 +11,7 @@ Rails.application.routes.draw do
       resources :products
       resources :categories
       resources :addresses
-      resources :order_contents, :only => [:destroy]
+      resources :order_contents, :only => [:destroy, :update]
       resources :orders, :except => [:new, :create]
       resources :users do
         resources :addresses #:only => [:index, :new, :create]
