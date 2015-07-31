@@ -15,11 +15,8 @@ class OrdersController < ApplicationController
   end
 
   def new
-
     @user = User.find(params[:user_id])
     @order = @user.orders.new
-
-
   end
 
   def create
@@ -36,6 +33,7 @@ class OrdersController < ApplicationController
 
   def edit
     @order = Order.find(params[:id])
+    @user = @order.user
   end
 
   def update

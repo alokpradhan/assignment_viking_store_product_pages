@@ -3,6 +3,9 @@
 <div class="panel panel-default">
   <div class="panel-body">
     <%= render :partial => 'basic_order_info' %>
-
+    <%= form_for [@order] do |f| %>
+    <%= render :partial => 'address_dropdowns' %>
+    <%= f.submit %>
+  <%end%>
   </div>
 </div>

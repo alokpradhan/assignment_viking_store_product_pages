@@ -2,18 +2,9 @@
 <div class="panel panel-default">
   <div class="panel-body">
     <%= render :partial => 'basic_order_info' %>
-    <%= form_for [:user, @order], action: '/edit' do |f| %>
-      <h3>Shipping Address</h3>
-      <%= collection_select(:order, :shipping_id, @user.addresses, :id, :street_address) %>
-      <h3>Billing Address</h3>
-      <%= collection_select(:order, :billing_id, @user.addresses, :id, :street_address) %>
-      <% if @user.credit_card %>
-      <h3>Billing Card</h3>
-      <select name="fun" id="cards">
-        <option><%=@user.credit_card.card_number%></option>
-      </select>
-      <% end %>
-      <%= f.submit %>
-    <% end %>
-    </div>
+    <%= form_for [:user, @order] do |f| %>
+    <%= render :partial => 'address_dropdowns' %>
+    <%= f.submit %>
+  <%end%>
+  </div>
 </div>
