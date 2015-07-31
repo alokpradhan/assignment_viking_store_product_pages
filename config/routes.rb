@@ -4,6 +4,21 @@ Rails.application.routes.draw do
   put 'admin/order_contents' => "order_contents#update_quantities", :as => "update_quantities"
   put 'admin/add_items' => "order_contents#add_items", :as => "add_items"
 
+  namespace :store do 
+    resources :products, :only => [:index, :show]
+    resources :categories, :only => [:index, :show]
+    resources :orders, :only => [:index, :show]
+    resource :address, :only => [:show]
+    resource :user, :only => [:show]
+
+    
+
+
+  end
+    
+
+
+
   resources :admin do
     collection do 
       get 'dashboard/index'

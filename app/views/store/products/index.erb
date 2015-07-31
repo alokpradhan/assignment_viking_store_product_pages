@@ -1,0 +1,26 @@
+<div class="bg-success"><%= flash[:success] %></div>
+  <div class="panel panel-defualt">
+  <div class="panel-body">
+    <h2 class="text-center" >Viking Store Products</h2>
+
+<table class="table table-striped">
+  
+    <th>ID</th>
+    <th>SKU</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th>Category ID</th>
+  
+  <% @products.each do |p| %>
+  <tr>
+    <td><%= p.id  %></td>
+    <td><%= p.sku.round  %></td>
+    <td><%= p.name  %></td>
+    <td><%= p.description  %></td>
+    <td>£<%= p.price.round(2)%></td>
+    <td> <%= p.category_id %></td>
+    <td><%= link_to "Buy", '#'  %></td>
+  </tr>
+  <% end %>
+</table>
