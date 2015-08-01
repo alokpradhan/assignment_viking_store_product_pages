@@ -1,5 +1,5 @@
 
-<%= form_for @product do |f| %>
+<%= form_for [:admin, @product] do |f| %>
   <div class="form-group">
     <label for="SKU">SKU (Automatically Generated)</label>
     <input type="text" name="SKU" class="form-control" disabled="true" value="<%=@product.sku%>">

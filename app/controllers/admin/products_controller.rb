@@ -1,5 +1,5 @@
 class Admin::ProductsController < AdminController
-  
+
   include CategoriesHelper
   
   def index
@@ -10,7 +10,7 @@ class Admin::ProductsController < AdminController
     @product = Product.find(params[:id])
     @products = @product.orders
     flash[:success] = "Show page coming soon"
-    redirect_to products_path
+    redirect_to admin_products_path
   end
 
   def new
@@ -25,7 +25,7 @@ class Admin::ProductsController < AdminController
     if @product.save
       
       flash[:success] = "Product Created Successfully"
-      redirect_to products_path
+      redirect_to admin_products_path
     else 
       flash.now[:error] = "Failed to created Product. Please Try again"
       render :new
@@ -41,7 +41,7 @@ class Admin::ProductsController < AdminController
   def update
     @product = Product.find(params[:id])
     if @product.update(params_hash)
-      redirect_to products_path
+      redirect_to admin_products_path
       flash[:success] = "Product Updated"
     else
       flash.now[:error] = "Failed to update. Please Try again"
@@ -54,7 +54,7 @@ class Admin::ProductsController < AdminController
     @product = Product.find(params[:id])
     @product.destroy
     flash[:success] = "OBLITERATED"
-    redirect_to products_path
+    redirect_to admin_products_path
   end
   
   private

@@ -12,7 +12,7 @@ class Admin::UsersController < AdminController
     @user = User.new(params_hash)
     if @user.save
       flash[:success] = "New User Created"
-      redirect_to users_path
+      redirect_to admin_users_path
     else
       flash[:error] = "Error: New User Not Created"
       render :new
@@ -32,7 +32,7 @@ class Admin::UsersController < AdminController
     @user = User.find(params[:id])
     if @user.update(params_hash)
       flash[:success] = "User Successfully Updated"
-      redirect_to user_path(@user)
+      redirect_to admin_user_path(@user)
     else
       flash[:error] = "Failed to Update User"
       render :edit
@@ -43,10 +43,10 @@ class Admin::UsersController < AdminController
     @user = User.find(params[:id])
     if @user.destroy
       flash[:error] = "User Successfully Deleted"
-      redirect_to users_path
+      redirect_to admin_users_path
     else
       flash[:error] = "Failed to Delete User"
-      redirect_to users_path
+      redirect_to admin_users_path
     end
   end
 

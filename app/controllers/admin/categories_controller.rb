@@ -17,7 +17,7 @@ class Admin::CategoriesController < AdminController
     @category = Category.new(params_hash)
     if @category.save
       flash[:success] = "Category Created Successfully"
-      redirect_to categories_path
+      redirect_to admin_categories_path
     else 
       flash.now[:error] = "Failed to created Category. Please Try again"
       render :new
@@ -31,7 +31,7 @@ class Admin::CategoriesController < AdminController
   def update
     @category = Category.find(params[:id])
     if @category.update(params_hash)
-      redirect_to categories_path
+      redirect_to admin_categories_path
       flash[:success] = "Category Updated"
     else
       flash.now[:error] = "Failed to update. Please Try again"
@@ -43,7 +43,7 @@ class Admin::CategoriesController < AdminController
   def destroy
     @category = Category.find(params[:id])
     @category.destroy
-    redirect_to categories_path
+    redirect_to admin_categories_path
   end
   
   private

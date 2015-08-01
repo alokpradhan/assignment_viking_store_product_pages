@@ -24,7 +24,7 @@ class Admin::OrdersController < AdminController
     @order = @user.orders.new(params_list)
     if @order.save
       flash[:success] = "Order Created!"
-      redirect_to edit_order_path(@order)
+      redirect_to edit_admin_order_path(@order)
     else
       flash[:error] = "Failed to Create Order!"
       render :new
@@ -41,7 +41,7 @@ class Admin::OrdersController < AdminController
     @order = Order.find(params[:id])
     if @order.update(params_list)
       flash[:success] = "Order Updated!"
-      redirect_to order_path
+      redirect_to admin_order_path(@order)
     else
       flash[:error] = "Could not Update Order"
       render :edit
@@ -52,10 +52,10 @@ class Admin::OrdersController < AdminController
     @order = Order.find(params[:id])
     if @order.destroy
       flash[:success] = "Order Deleted"
-      redirect_to orders_path
+      redirect_to admin_orders_path
     else
       flash[:error] = "Could not Delete Order"
-      redirect_to orders_path
+      redirect_to admin_orders_path
     end
   end
 end

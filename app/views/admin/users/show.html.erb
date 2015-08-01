@@ -29,10 +29,10 @@
         <td><%= @user.get_address(:shipping_address) %></td>
       </tr>
     </table>
-    <%= link_to "All Addresses", user_addresses_path(@user) %><br>
-    <%= link_to "Edit #{@user.name}'s Information", edit_user_path(@user) %>
+    <%= link_to "All Addresses", admin_user_addresses_path(@user) %><br>
+    <%= link_to "Edit #{@user.name}'s Information", edit_admin_user_path(@user) %>
     <br>
-    <%= link_to "Delete #{@user.name}", user_path(@user), method: :delete %>
+    <%= link_to "Delete #{@user.name}", admin_user_path(@user), method: :delete %>
     <br>
     <%# link_to "View Saved Addresses", user_addresses(@user) %>
     <br>
@@ -72,8 +72,8 @@
 <div class="panel panel-default">
   <div class="panel-body">
     <h4>Admin Actions for <%= @user.name %></h4>
-     <%= link_to "Create Order", new_user_order_path(@user), :disabled => "true", :class => "btn btn-primary btn-lg btn-block" %>
-     <%= link_to "Create Address", new_user_address_path(@user), :class => "btn btn-primary btn-lg btn-block" %>
+     <%= link_to "Create Order", new_admin_user_order_path(@user), :class => "btn btn-primary btn-lg btn-block" %>
+     <%= link_to "Create Address", new_admin_user_address_path(@user), :class => "btn btn-primary btn-lg btn-block" %>
   </div>
 </div>
 
@@ -95,9 +95,9 @@
           <td><%= o.created_at.strftime("%m/%d/%Y") %></td>
           <td>£<%= o.value %></td>
           <td><%= o.status.html_safe %></td>
-          <td><%= link_to "Show", user_order_path(@user, o) %></td>
-          <td><%= link_to "Edit", edit_user_order_path(@user, o) %></td>
-          <td><%= link_to "Delete", user_order_path(@user, o), method: :delete %></td>
+          <td><%= link_to "Show", admin_user_order_path(@user, o) %></td>
+          <td><%= link_to "Edit", edit_admin_user_order_path(@user, o) %></td>
+          <td><%= link_to "Delete", admin_user_order_path(@user, o), method: :delete %></td>
         </tr>
       <% end %>
     </table>

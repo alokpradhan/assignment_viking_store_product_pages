@@ -1,4 +1,3 @@
-
 class Admin::AddressesController < AdminController
 
   def index
@@ -21,7 +20,7 @@ class Admin::AddressesController < AdminController
     @user = User.find(params[:address][:user_id])
     if @user.addresses.create(params_list)
       flash[:success] = "Address Created!"
-      redirect_to user_path(@user)
+      redirect_to admin_user_path(@user)
     else
       flash[:error] = "Error: Address Not Created"
       render :new
@@ -45,7 +44,7 @@ class Admin::AddressesController < AdminController
     @user = User.find(params[:address][:user_id])
     if @user.addresses.update(@address.id, params_list)
       flash[:success] = "Address Updated!"
-      redirect_to user_path(@user)
+      redirect_to admin_user_path(@user)
     else
       flash[:error] = "Error: Address Not Updated"
       render :new
@@ -55,7 +54,7 @@ class Admin::AddressesController < AdminController
 
   def destroy
     Address.find(params[:id]).destroy
-    redirect_to addresses_path
+    redirect_to admin_addresses_path
   end
 
   private

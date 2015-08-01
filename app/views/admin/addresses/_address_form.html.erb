@@ -1,10 +1,9 @@
 
-<%= form_for @address do |f| %>
+<%= form_for [:admin, @address] do |f| %>
 
   <% if @user %>
   <h4>USER ID:<%= @user.id %></h>
   <% end %>
-  
 
   <div class="form-group">
     <%= f.label "Street Address" %>

@@ -4,7 +4,7 @@
   <div class="panel-body">
     <h2 class="text-center" >Viking Store Users</h2>
 
-      <%= link_to "Create New User", new_user_path , :class => "btn btn-primary btn-lg btn-block" %>
+      <%= link_to "Create New User", new_admin_user_path , :class => "btn btn-primary btn-lg btn-block" %>
 
 <table class="table table-striped">
   
@@ -24,9 +24,9 @@
     <td><%= u.completed_orders %></td>
     <td><%= u.created_at.strftime("%m/%d/%Y")  %></td>
     <td><%= u.updated_at.strftime("%m/%d/%Y")  %></td>
-    <td><%= link_to "show", user_path(u) %></td>
-    <td><%= link_to "edit", edit_user_path(u) %></td>
-    <td><%= link_to "delete", user_path(u), :method => :delete, :confirm => "Are you sure?" %></td>
+    <td><%= link_to "show", admin_user_path(u) %></td>
+    <td><%= link_to "edit", edit_admin_user_path(u) %></td>
+    <td><%= link_to "delete", admin_user_path(u), :method => :delete, :confirm => "Are you sure?" %></td>
   </tr>
   <% end %>
 </table>

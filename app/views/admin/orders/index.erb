@@ -6,9 +6,9 @@
 
     <div "text-center">
       <% if @user %>
-        <%= link_to "Create Order for #{@user.name}", new_user_order_path(@user), :class => "btn btn-primary btn-lg btn-block" %>
+        <%= link_to "Create Order for #{@user.name}", new_admin_user_order_path(@user), :class => "btn btn-primary btn-lg btn-block" %>
       <% end %>
-      <h4><em>Create new orders from within <%= link_to "User", users_path %> profiles</em></h4>
+      <h4><em>Create new orders from within <%= link_to "User", admin_users_path %> profiles</em></h4>
     </div>
 
 
@@ -29,16 +29,16 @@
   <% @orders.each do |o| %>
   <tr>
     <td><%= o.id  %></td>
-    <td><%= link_to o.user_id, user_orders_path(o.user)  %></td>
+    <td><%= link_to o.user_id, admin_user_orders_path(o.user)  %></td>
     <td><%= o.shipping_address.street_address if o.shipping_address %></td>
     <td><%= o.shipping_address.city.name if o.shipping_address%></td>
     <td><%= o.shipping_address.state.name if o.shipping_address%></td>
     <td><%= o.value %></td>
     <td><%= o.status.html_safe %></td>
     <td><%= o.checkout_date.strftime("%m/%d/%Y") unless o.checkout_date.nil?  %></td>
-    <td><%= link_to "show", order_path(o) %></td>
-    <td><%= link_to "edit", edit_order_path(o) %></td>
-    <td><%= link_to "delete", order_path(o), :method => :delete, :confirm => "Are you sure?" %></td>
+    <td><%= link_to "show", admin_order_path(o) %></td>
+    <td><%= link_to "edit", admin_edit_order_path(o) %></td>
+    <td><%= link_to "delete", admin_order_path(o), :method => :delete, :confirm => "Are you sure?" %></td>
   </tr>
   <% end %>
 </table>

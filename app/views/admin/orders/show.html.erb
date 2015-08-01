@@ -10,7 +10,7 @@
     </tr>
     <tr>
       <td> Customer: </td>
-      <td> <%= link_to @order.user.name, user_path(@order.user)  %></td>
+      <td> <%= link_to @order.user.name, admin_user_path(@order.user)  %></td>
     </tr>
     <tr>
       <td>Email: </td>
@@ -28,7 +28,7 @@
       <td>Order Value</td>
       <td><%= @order.value %></td>
     </tr></table>
-    <%= link_to "Edit Customer Profile", edit_user_path(@order.user)  %>
+    <%= link_to "Edit Customer Profile", edit_admin_user_path(@order.user)  %>
     <h3>Order Status:</h3>
     <h2><%= @order.status.html_safe %></h2>
     <h3>Shipping Address</h3>
@@ -71,8 +71,8 @@
       </td>
     </table>
 
-    <%= link_to "Edit Order", edit_order_path(@order)  %>
-    <%= link_to "Delete Order", order_path(@order), method: :delete  %>  
+    <%= link_to "Edit Order", edit_admin_order_path(@order)  %>
+    <%= link_to "Delete Order", admin_order_path(@order), method: :delete  %>  
 
   </div>
 </div>
@@ -99,8 +99,8 @@
         <% end %>
       </tbody>
     </table>
-    <%= link_to "Edit Order", edit_order_path(@order)  %>
-    <%= link_to "Delete Order", order_path(@order), method: :delete  %> 
+    <%= link_to "Edit Order", edit_admin_order_path(@order)  %>
+    <%= link_to "Delete Order", admin_order_path(@order), method: :delete  %> 
   </div>
 </div>
 

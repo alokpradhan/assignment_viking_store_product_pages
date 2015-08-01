@@ -1,5 +1,5 @@
 <hr>
-<%= form_for @category do |f| %>
+<%= form_for [:admin, @category] do |f| %>
   <div class="form-group">
     <label for="id">ID (Automatically Generated)</label>
     <input type="text" name="id" class="form-control" disabled="true" value="<%=@category.id%>">

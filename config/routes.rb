@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
 
   root 'dashboard#index'
-  put 'admin/order_contents' => "order_contents#update_quantities", :as => "update_quantities"
-  put 'admin/add_items' => "order_contents#add_items", :as => "add_items"
+
 
   # namespace :store do 
   #   resources :products, :only => [:index, :show]
@@ -16,6 +15,9 @@ Rails.application.routes.draw do
       get 'dashboard/index'
       get 'dashboard/show'
       
+      put 'order_contents' => "order_contents#update_quantities", :as => "update_quantities"
+      put 'add_items' => "order_contents#add_items"
+
       resources :products
       resources :categories
       resources :addresses

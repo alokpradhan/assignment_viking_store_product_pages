@@ -2,7 +2,7 @@
 <div class="panel panel-default">
   <div class="panel-body">
     <%= render :partial => 'basic_order_info' %>
-    <%= form_for [:user, @order] do |f| %>
+    <%= form_for [:admin, :user, @order] do |f| %>
     <%= render :partial => 'address_dropdowns' %>
     <%= f.submit %>
   <%end%>
